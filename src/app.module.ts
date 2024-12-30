@@ -1,8 +1,12 @@
 import { Module } from '@nestjs/common';
-import { CiFarmModule } from './cifarm/cifarm.module';
+import { CiFarmModule } from './cifarm';
+import { CiWalletModule } from './ciwallet';
 
 @Module({
-  imports: [CiFarmModule.forRoot()],
+  imports: [
+    // CiFarmModule.forRoot()
+    CiWalletModule.forRoot()
+  ],
   controllers: [],
   providers: [],
 })

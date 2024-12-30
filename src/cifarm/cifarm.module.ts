@@ -10,7 +10,7 @@ export class CiFarmModule {
             module: CiFarmModule,
             imports: [
                 EnvModule.forRoot(),
-                // TelegramUserTrackerPostgreSQLModule.forRoot()
+                TelegramUserTrackerPostgreSQLModule.forRoot()
             ],
             providers: [
                 CiFarmService

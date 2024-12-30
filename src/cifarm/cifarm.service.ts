@@ -14,7 +14,7 @@ export class CiFarmService implements OnModuleInit {
   }
 
   onModuleInit() {
-    this.bot = new Telegraf(envConfig().botToken)
+    this.bot = new Telegraf(envConfig().telegramBots.ciFarm.token)
     this.initializeCommands()
   }
 
@@ -39,7 +39,7 @@ export class CiFarmService implements OnModuleInit {
             caption,
             reply_markup: {
               inline_keyboard: [
-                [{ text: "Play Cifarm", url: envConfig().ciFarmMiniAppUrl }],
+                [{ text: "Play Cifarm", url: envConfig().telegramBots.ciFarm.miniAppUrl }],
               ],
             },
           }
