@@ -4,7 +4,7 @@ import { CiWalletModule } from './ciwallet';
 
 @Module({
   imports: [
-    // CiFarmModule.forRoot()
+    // CiFarmModule.forRoot(),
     CiWalletModule.forRoot()
   ],
   controllers: [],
