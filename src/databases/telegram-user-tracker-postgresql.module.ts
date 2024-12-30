@@ -5,23 +5,33 @@ import { envConfig } from "src/env";
 import { TelegramUserTrackerPostgreSQLService } from "./telegram-user-tracker-postgresql.service";
 
 @Module({
-    imports: [
-        TypeOrmModule.forRoot({
-            type: "postgres",
-            host: envConfig().database.postgresql.telegramUserTracker.host,
-            port: envConfig().database.postgresql.telegramUserTracker.port,
-            username: envConfig().database.postgresql.telegramUserTracker.username,
-            password: envConfig().database.postgresql.telegramUserTracker.password,
-            database: envConfig().database.postgresql.telegramUserTracker.dbName,
-            entities: telegramUserTrackerPostgreSqlEntites(),
-            synchronize: true,
-            poolSize: 10,
-            connectTimeoutMS: 5000,
-        }),
-        TypeOrmModule.forFeature(telegramUserTrackerPostgreSqlEntites()),
-    ],
+    imports: [],
     controllers: [],
-    providers: [TelegramUserTrackerPostgreSQLService],
+    providers: [],
     exports: [TelegramUserTrackerPostgreSQLService],
 })
-export class TelegramUserTrackerPostgreSQLModule {}
+export class TelegramUserTrackerPostgreSQLModule {
+
+    public static forRoot() {
+        return {
+            module: TelegramUserTrackerPostgreSQLModule,
+            imports: [
+                TypeOrmModule.forRoot({
+                    type: "postgres",
+                    host: envConfig().database.postgresql.telegramUserTracker.host,
+                    port: envConfig().database.postgresql.telegramUserTracker.port,
+                    username: envConfig().database.postgresql.telegramUserTracker.username,
+                    password: envConfig().database.postgresql.telegramUserTracker.password,
+                    database: envConfig().database.postgresql.telegramUserTracker.dbName,
+                    entities: telegramUserTrackerPostgreSqlEntites(),
+                    synchronize: true,
+                    poolSize: 10,
+                    connectTimeoutMS: 5000,
+                }),
+                TypeOrmModule.forFeature(telegramUserTrackerPostgreSqlEntites()),
+            ],
+            providers: [TelegramUserTrackerPostgreSQLService],
+            exports: [TelegramUserTrackerPostgreSQLService],
+        };
+    }
+}
